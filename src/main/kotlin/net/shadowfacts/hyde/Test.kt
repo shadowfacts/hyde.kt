@@ -5,12 +5,25 @@ fun main(args: Array<String>) {
 
 	html {
 		head {
-			title { +"Test" }
+			title("Test")
+			link("test.css")
 		}
 		body {
-			a("https://google.com") { +"a link" }
-			br {}
-			strong { +"I'm bold" }
+			a("a link", "https://google.com") {
+				title = "some link"
+			}
+			br()
+			strong("I'm bold")
+			br()
+			img("https://github.com/shadowfacts.png") {
+				title = "something or other"
+			}
+			script {
+				+"""
+				|// stuff
+				|console.log('done');
+				""".trimMargin()
+			}
 		}
 	}.render(builder, "")
 
