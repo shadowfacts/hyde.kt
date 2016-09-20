@@ -1,0 +1,28 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+	}
+}
+
+plugins {
+	id "idea"
+}
+
+apply plugin: "kotlin"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	compile group: "org.jetbrains.kotlin", name: "kotlin-stdlib", version: kotlin_version
+	compile group: "org.jetbrains.kotlin", name: "kotlin-reflect", version: kotlin_version
+	compile group: "org.jetbrains.kotlin", name: "kotlin-runtime", version: kotlin_version
+	compile group: "org.jetbrains.kotlin", name: "kotlin-compiler", version: kotlin_version
+}

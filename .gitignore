@@ -1,0 +1,6 @@
+hyde.kt.ipr
+hyde.kt.iml
+hyde.kt.iws
+.DS_Store
+out/
+.gradle/
