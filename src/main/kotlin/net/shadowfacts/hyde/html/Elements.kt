@@ -89,8 +89,11 @@ class HTML : Tag("html") {
 }
 
 class Head : Tag("head") {
+
 	fun title(text: String = "", init: Title.() -> Unit = {}) = initTag(Title(), { +text; init() })
 	fun link(href: String = "", rel: String = "stylesheet") = initTag(Link(href, rel), {})
+	fun style(text: String = "") = initTag(Style(), { +text })
+
 }
 
 class Title : TagText("title")
@@ -112,6 +115,8 @@ class Link(href: String, rel: String) : TagSingle("link") {
 	}
 }
 
+class Style() : TagContent("style")
+
 abstract class TagContent(name: String) : TagText(name) {
 
 	private fun <T : Tag> doInit(text: String, init: T.() -> Unit): T.() -> Unit {
@@ -120,6 +125,12 @@ abstract class TagContent(name: String) : TagText(name) {
 			init()
 		}
 	}
+
+	fun div(init: Div.() -> Unit) = initTag(Div(), init)
+	fun section(init: Section.() -> Unit) = initTag(Section(), init)
+	fun header(init: Header.() -> Unit) = initTag(Header(), init)
+	fun footer(init: Footer.() -> Unit) = initTag(Footer(), init)
+	fun aside(init: Aside.() -> Unit) = initTag(Aside(), init)
 
 	fun b(text: String = "", init: Bold.() -> Unit = {}) = initTag(Bold(), doInit(text, init))
 	fun i(text: String = "", init: Italic.() -> Unit = {}) = initTag(Italic(), doInit(text, init))
@@ -144,6 +155,12 @@ class Body : TagContent("body") {
 	fun script(src: String = "", init: Script.() -> Unit = {}) = initTag(Script(src), init)
 
 }
+
+class Div() : TagContent("div")
+class Section() : TagContent("section")
+class Header() : TagContent("header")
+class Footer() : TagContent("footer")
+class Aside() : TagContent("aside")
 
 class Script() : TagContent("script") {
 	var src: String

@@ -7,15 +7,21 @@ fun main(args: Array<String>) {
 		head {
 			title("Test")
 			link("test.css")
+			style("""
+			|h1 {
+			|	color: red;
+			|}
+			""".trimMargin())
 		}
 		body {
+			h1("a title")
 			a("a link", "https://google.com") {
 				title = "some link"
 			}
 			br()
 			strong("I'm bold")
 			br()
-			img("https://github.com/shadowfacts.png") {
+			img("test.png") {
 				title = "something or other"
 			}
 			script {
