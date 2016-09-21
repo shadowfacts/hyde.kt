@@ -3,7 +3,7 @@ import net.shadowfacts.hyde.html.*
 fun main(args: Array<String>) {
 	val builder = StringBuilder()
 
-	html {
+	val html = html {
 		head {
 			title("Test")
 			link("test.css")
@@ -21,7 +21,9 @@ fun main(args: Array<String>) {
 			br()
 			strong("I'm bold")
 			br()
-			img("test.png") {
+			img("https://github.com/shadowfacts.png") {
+				width = 50
+				height = 50
 				title = "something or other"
 			}
 			script {
@@ -31,7 +33,8 @@ fun main(args: Array<String>) {
 				""".trimMargin()
 			}
 		}
-	}.render(builder, "")
+	}
 
+	html.render(builder)
 	println(builder.toString())
 }
